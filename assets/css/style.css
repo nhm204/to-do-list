@@ -1,0 +1,219 @@
+:root {
+    --primary-color: #3C2B84;
+    --secondary-color: #F79E89;
+    --third-color: #A59FFE;
+    --element-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: #F76C6A;
+    --white-color: #FFF;
+    --dark-blueberry-color: #090B37;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%; /* 100% = 16px => 62.5% = 10px */
+    line-height: 1.6rem;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.app {
+    overflow: auto;
+    position: relative;
+    /* padding: 4vh 2vw; */
+    height: 90vh;
+    width: 50vw;
+    margin: 4vh auto;
+    border-radius: 24px;
+    outline: 4px solid var(--dark-blueberry-color);
+    background-color: var(--primary-color);
+    box-shadow: 20px 18px var(--shadow-color);
+}
+
+
+/* Header */
+.app__header {
+    position: fixed;
+    width: 50vw;
+    background-color: var(--primary-color);
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    padding: 4vh 2vw 2.5vh;
+    z-index: 20;
+}
+
+.logo {
+    color: var(--secondary-color);
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 4rem;
+    letter-spacing: 2px;
+    text-shadow: 5px 4px var(--shadow-color);
+}
+
+
+/* Task List */
+.app__content {
+    margin: 10vh 0 8vh;
+    padding: 2vh 2vw;
+}
+
+.task__list {
+    overflow-y: scroll;
+}
+
+.task__item {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    padding: 10px 20px;
+    border-radius: 40px;
+    background-color: var(--element-color);
+    margin: 2vh 0;
+    align-items: center;
+}
+
+.done > .task__content {
+    text-decoration: line-through;
+}
+
+.task__content {
+    font-size: 1.6rem;
+    color: var(--white-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 2rem;
+    margin-top: 2px;
+    user-select: none;
+    flex: 1;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.actions {
+    display: flex;
+    margin-top: 2px;
+}
+
+.isEdited, .isDone, .isPrioritised {
+    cursor: pointer;
+    color: var(--third-color);
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1rem;
+    margin-right: 16px;
+    border: none;
+    background-color: transparent;
+}
+
+.isEdited {
+    margin-left: 8vw;
+}
+
+.actions button:hover {
+    color: var(--secondary-color);
+}
+
+.isDone {
+    margin-right: 0;
+}
+
+.isPrioritised {
+    color: var(--white-color);
+}
+
+.isDeleted {
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #FFF;
+    line-height: 1.8rem;
+    border: none;
+    background-color: #fa4946;
+    padding: 1px 5px 0.5px;
+    height: 20px;
+    border-radius: 50%;
+    margin: -1px -10px 0 16px;
+    display: none;
+}
+
+.task__item:hover .isDeleted {
+    display: block;
+    color: #FFF;
+    animation: fadeIn linear 0.5s;
+}
+
+
+/* Footer */
+.app__footer {
+    position: fixed;
+    bottom: 6vh;
+    padding: 16px 2vw;
+    margin: 0 auto;
+    width: 50vw;
+    background-color: var(--primary-color);
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    border-top: 1px solid var(--element-color);
+}
+
+#form {
+    display: flex;
+    height: 40px;
+}
+
+#taskInput {
+    flex: 1;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--dark-blueberry-color);
+    padding: 0px 16px;
+    border-radius: 40px;
+    outline: none;
+    border: 1px solid var(--element-color);
+    margin-right: 16px;
+}
+
+#taskInput::placeholder {
+    color: var(--third-color);
+}
+
+.create-btn {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    padding: 0 2vw;
+    border-radius: 40px;
+    background-color: var(--element-color);
+    border: 3px solid transparent;
+}
+
+.create-btn:hover {
+    cursor: pointer;
+    border: 3px solid var(--element-color);
+}
